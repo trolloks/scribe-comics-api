@@ -1,0 +1,75 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".ts"
+                ]
+            }
+        }
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "./",
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            3,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/indent": [
+            "warn",
+            3
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ],
+        "linebreak-style": "off",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "import/prefer-default-export": "off",
+        "no-return-await": "off",
+        "no-console": "off",
+        "max-classes-per-file": "off",
+        "@typescript-eslint/camelcase": "off",
+        "no-throw-literal": "off",
+        "class-methods-use-this": "off",
+        "no-underscore-dangle": "off"
+    }
+}

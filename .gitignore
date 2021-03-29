@@ -1,0 +1,6 @@
+_output/
+coverage/
+node_modules/
+lib/
+package-lock.json
+env.json
