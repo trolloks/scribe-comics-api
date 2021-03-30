@@ -10,11 +10,12 @@ function sleep(time: number) {
 }
 
 export async function listVolumes(
-  name: string,
+  name?: string,
   year?: string,
-  publisher?: string
+  publisher?: string,
+  id?: string
 ): Promise<Volume[] | null> {
-  var issuesResponse = await listComicVineVolumes(name);
+  var issuesResponse = await listComicVineVolumes(name, id);
   if (!issuesResponse.results) {
     return [];
   }
@@ -25,7 +26,7 @@ export async function listVolumes(
   while (allResults.length < number_of_total_results) {
     console.log("sleeping ...");
     await sleep(2000);
-    var newResponse = await listComicVineVolumes(name, skip);
+    var newResponse = await listComicVineVolumes(name, id, skip);
     if (!newResponse.results) {
       break;
     }
@@ -40,7 +41,8 @@ export async function listVolumes(
     comicvine_id: i.id,
     publisher: i.publisher && i.publisher.name,
   }));
-  return comics.filter(
+
+  const filteredComics = comics.filter(
     (i) =>
       (!year || i.start_year === year) &&
       (!name || i.name.toLowerCase().trim() === name.toLowerCase().trim()) &&
@@ -48,4 +50,6 @@ export async function listVolumes(
         (i.publisher &&
           i.publisher.toLowerCase().trim() === publisher.toLowerCase().trim()))
   );
+
+  return filteredComics;
 }
